@@ -11,3 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Smooth transitions for theme elements */
+a, button, input, .card { transition: all .2s ease; }

@@ -1,82 +1,48 @@
-# Lightweight React Template for KAVIA
+# Recipe Explorer - Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A modern, responsive UI to browse, search, and view recipe details. Built with Create React App and a lightweight Ocean Professional theme.
 
 ## Features
-
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Ocean Professional theme with blue and amber accents
+- Header with search, recipe grid, and detail modal
+- Search by title or ingredient
+- Graceful loading/error/empty states
+- API integration via environment variable with automatic mock fallback
 
 ## Getting Started
+- Install: `npm install`
+- Run: `npm start`
+- Build: `npm run build`
+- Test: `npm test`
 
-In the project directory, you can run:
+## Environment Variables
+The app reads the API base from the following vars (in precedence order):
+1. `REACT_APP_API_BASE`
+2. `REACT_APP_BACKEND_URL`
 
-### `npm start`
+If neither is set, the app uses an internal mock data provider with sample recipes.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Optional vars (pre-existing in container):
+- `REACT_APP_FRONTEND_URL`, `REACT_APP_WS_URL`, `REACT_APP_NODE_ENV`, etc. are not required by this app directly.
 
-### `npm test`
+Create a `.env` file based on `.env.example`.
 
-Launches the test runner in interactive watch mode.
+## Project Structure
+- `src/services/api.js` — API client using env-based base URL
+- `src/services/mockData.js` — Mock provider used when API is not configured
+- `src/hooks/useRecipes.js` — State management for listing/search/detail
+- `src/components/*` — Header, SearchBar, RecipeGrid, RecipeCard, RecipeDetail
+- `src/styles/theme.css`, `src/styles/global.css` — Theme and global styles
+- `src/App.js` — App shell orchestrating components and modal
 
-### `npm run build`
+## Styling
+- Minimal CSS with variables
+- Subtle shadows, rounded corners, smooth transitions
+- Responsive grid (1/2/3 columns)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future integration
+- TODO: Replace mock provider with live API once the backend is available. Keep the same data access methods (fetchRecipes, fetchRecipeById) for a seamless swap.
 
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Accessibility
+- Keyboard accessible cards and modal (Enter/Space to open, Esc to close)
+- Semantic roles and aria labels for assistive tech
