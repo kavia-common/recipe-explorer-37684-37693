@@ -2,10 +2,12 @@ const readEnv = (key) => {
   try { return process.env[key]; } catch { return undefined; }
 };
 
-const apiBase =
+const apiBaseRaw =
   readEnv('REACT_APP_API_BASE')?.trim() ||
   readEnv('REACT_APP_BACKEND_URL')?.trim() ||
   '';
+
+const apiBase = apiBaseRaw || '';
 
 const isConfigured = !!apiBase;
 

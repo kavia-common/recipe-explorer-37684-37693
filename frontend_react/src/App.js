@@ -6,8 +6,9 @@ import './styles/global.css';
 import Header from './components/Header';
 import RecipeGrid from './components/RecipeGrid';
 import RecipeDetail from './components/RecipeDetail';
-import { useRecipes, getRecipeDetail } from './hooks/useRecipes';
+import { useRecipes } from './hooks/useRecipes';
 import { getApiBase } from './services/api';
+import { getRecipeDetail } from './hooks/useRecipes';
 
 // PUBLIC_INTERFACE
 function App() {
